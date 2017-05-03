@@ -14,12 +14,12 @@ pipeline {
     stage ('Start') {
       steps {
         // send build started notifications
-        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        //slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 
         // send to HipChat
-        hipchatSend (color: 'YELLOW', notify: true,
+        /*hipchatSend (color: 'YELLOW', notify: true,
             message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-          )
+          ) */
 
         // send to email
         emailext (
@@ -72,11 +72,11 @@ pipeline {
   }
   post {
     success {
-      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+      //slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 
-      hipchatSend (color: 'GREEN', notify: true,
+      /*hipchatSend (color: 'GREEN', notify: true,
           message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-        )
+        )*/
 
       emailext (
           subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
@@ -87,11 +87,11 @@ pipeline {
     }
 
     failure {
-      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+      //slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 
-      hipchatSend (color: 'RED', notify: true,
+      /*hipchatSend (color: 'RED', notify: true,
           message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-        )
+        )*/
 
       emailext (
           subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
